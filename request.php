@@ -10,19 +10,21 @@ class Request {
     private $postData = '';
     private $ckfile = '';
     private $createCookieJar = false;
+    private $isJasonPostData = false;
 
     /**
      * tahomeRequest constructor.
      *
+     * @param string $userId normally an e-mailaddress
+     * @param string $password
      * @param string $url starting from tld
      * @example /enduser-mobile-web/enduserAPI/login
      */
-    public function __construct($url, $id, $password, $ckfile='') {
+    public function __construct($url, $userId, $password, $ckfile='') {
         $this->url = $url;
         $this->domain = 'https://www.tahomalink.com';
-        $this->postData = "userId=$id&userPassword=$password";
+        $this->postData = "userId=$userId&userPassword=$password";
         $this->ckfile = $ckfile;
-        $this->createCookieJar = false;
     }
 
     public function execute () {
@@ -30,6 +32,9 @@ class Request {
         curl_setopt($ch, CURLOPT_URL, $this->domain . $this->url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, false);
+        if ($this->isJasonPostData) {
+            curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+        }
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $this->postData);
         curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.0; en-US; rv:1.7.12) Gecko/20050915 Firefox/1.0.7");
@@ -49,10 +54,30 @@ class Request {
         return $output;
     }
 
+    /**
+     * Method to set data for POST
+     *
+     * @param array $postData
+     */
     public function setPostData($postData) {
         $this->postData = $postData;
     }
 
+    /**
+     * Method to set data for POST (in Json Format)
+     *
+     * @param string $postData Json format
+     */
+    public function setJasonPostData($postData) {
+        $this->postData = $postData;
+        $this->isJasonPostData = true;
+    }
+
+    /**
+     * Method to create cookieFile
+     *
+     * @return string name of tmp file
+     */
     public function createCookieFile() {
         $ckfile = tempnam("/tmp", "CURLCOOKIE");
         $this->createCookieJar = true;
