@@ -1,12 +1,8 @@
 <?php
 require_once('request.php');
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 /**
- * Class TahomaController
+ * Class Tahoma Controller
  *
  * A class to send commands to the Somfy Tahoma API
  * It is now possible to create simple web-application to manage your Home automation.

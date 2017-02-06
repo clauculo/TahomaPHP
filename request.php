@@ -1,7 +1,6 @@
 <?php
-namespace tahoma;
 
-class TahomaRequest {
+class Request {
 
     /**
      * @var string $url
