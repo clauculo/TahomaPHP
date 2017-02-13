@@ -7,6 +7,6 @@ Somfy Tahoma PHP module
 $myHome = new TahomaController();
 $myHome->setUserId('**********@*****.com');
 $myHome->setPassword('*******');
-$devices = $test->getDevices();
+$devices = $myHome->getDevices();
 $myHome->sendCommand($devices[3]->deviceURL, 'on', 0);
 ```
