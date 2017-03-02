@@ -1,0 +1,24 @@
+{
+  "name": "clauculo/TahomaPHP",
+  "description": "Tahoma controller for Somfy home automation.",
+  "keywords": ["Tahoma", "Somfy", "home", "automation", "home-automation"],
+  "homepage": "https://github.com/clauculo/TahomaPHP",
+  "type": "library",
+  "license": "",
+  "authors": [
+    {
+      "name": "Wouter",
+      "email": "wouteris@hotmail.com"
+    }
+  ],
+  "support": {
+    "email": "wouteris@hotmail.com",
+    "forum": "",
+    "issues": "https://github.com/clauculo/TahomaPHP/issues",
+    "gitter": ""
+  },
+  "require": {
+    "php": ">=7.0.0",
+    "ext-curl": "*"
+  }
+}
