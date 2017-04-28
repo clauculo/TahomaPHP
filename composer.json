@@ -13,12 +13,20 @@
   ],
   "support": {
     "email": "wouteris@hotmail.com",
-    "forum": "",
     "issues": "https://github.com/clauculo/TahomaPHP/issues",
     "gitter": ""
   },
   "require": {
     "php": ">=7.0.0",
     "ext-curl": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.1"
+  },
+  "scripts": {
+    "test": "./vendor/bin/phpunit"
+  },
+  "autoload": {
+    "classmap": ["src/"]
   }
 }

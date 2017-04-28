@@ -15,9 +15,11 @@ class Request {
     /**
      * tahomeRequest constructor.
      *
+     * @param string $url string
      * @param string $userId normally an e-mailaddress
      * @param string $password
-     * @param string $url starting from tld
+     * @param string $ckfile
+     *
      * @example /enduser-mobile-web/enduserAPI/login
      */
     public function __construct($url, $userId, $password, $ckfile='') {
@@ -27,6 +29,9 @@ class Request {
         $this->ckfile = $ckfile;
     }
 
+    /**
+     * @return mixed
+     */
     public function execute () {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->domain . $this->url);
@@ -58,6 +63,8 @@ class Request {
      * Method to set data for POST
      *
      * @param array $postData
+     *
+     * @return void
      */
     public function setPostData($postData) {
         $this->postData = $postData;
@@ -67,6 +74,8 @@ class Request {
      * Method to set data for POST (in Json Format)
      *
      * @param string $postData Json format
+     *
+     * @return void
      */
     public function setJasonPostData($postData) {
         $this->postData = $postData;
