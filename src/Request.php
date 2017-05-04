@@ -22,7 +22,7 @@ class Request {
      *
      * @example /enduser-mobile-web/enduserAPI/login
      */
-    public function __construct($url, $userId, $password, $ckfile='') {
+    public function __construct($url, $userId, $password, $ckfile = '') {
         $this->url = $url;
         $this->domain = 'https://www.tahomalink.com';
         $this->postData = "userId=$userId&userPassword=$password";
@@ -32,7 +32,7 @@ class Request {
     /**
      * @return mixed
      */
-    public function execute () {
+    public function execute() {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->domain . $this->url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
